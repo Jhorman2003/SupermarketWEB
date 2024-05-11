@@ -14,6 +14,7 @@ namespace SupermarketWEB.Pages.Products
         {
             _context = context;
         }
+
         [BindProperty]
         public Product Product { get; set; } = default!;
 
@@ -63,7 +64,8 @@ namespace SupermarketWEB.Pages.Products
 
         private bool ProductExists(int id)
         {
-            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Categories?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
     }
 }

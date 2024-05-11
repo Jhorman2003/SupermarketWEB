@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
@@ -12,7 +13,7 @@ namespace SupermarketWEB.Pages.Categories
         {
             _context = context;
         }
-        
+
         public IActionResult OnGet()
         {
             return Page();
@@ -20,13 +21,14 @@ namespace SupermarketWEB.Pages.Categories
 
         [BindProperty]
         public Category Category { get; set; } = default!;
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid || _context.Categories == null || Category == null)
             {
                 return Page();
             }
+
             _context.Categories.Add(Category);
             await _context.SaveChangesAsync();
 

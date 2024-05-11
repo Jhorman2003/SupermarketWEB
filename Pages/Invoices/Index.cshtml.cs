@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWEB.Pages.Products
+namespace SupermarketWEB.Pages.Invoices
 {
     [Authorize]
     public class IndexModel : PageModel
@@ -15,12 +15,12 @@ namespace SupermarketWEB.Pages.Products
         {
             _context = context;
         }
-        public IList<Product> Products { get; set; }
+        public IList<Invoice> Invoices { get; set; }
         public async Task OnGetAsync()
         {
-            
-            Products = await _context.Products.ToListAsync();
-            
+
+            Invoices = await _context.Invoices.ToListAsync();
+
         }
     }
 }

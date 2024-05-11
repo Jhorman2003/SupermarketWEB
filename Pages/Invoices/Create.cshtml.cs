@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWEB.Pages.Products
+namespace SupermarketWEB.Pages.Invoices
 {
     public class CreateModel : PageModel
     {
@@ -19,24 +19,20 @@ namespace SupermarketWEB.Pages.Products
         }
 
         [BindProperty]
-        public Product Product { get; set; } = default!;
+        public Invoice Invoice { get; set; } = default!;
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Products == null || Product == null)
+            if (!ModelState.IsValid || _context.Invoices == null || Invoice == null)
             {
                 return Page();
             }
 
-            _context.Products.Add(Product);
+            _context.Invoices.Add(Invoice);
 
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
-
-       
-
-
     }
 }

@@ -14,6 +14,7 @@ namespace SupermarketWEB.Pages.Categories
         {
             _context = context;
         }
+
         [BindProperty]
         public Category Category { get; set; } = default!;
 
@@ -35,7 +36,7 @@ namespace SupermarketWEB.Pages.Categories
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
@@ -46,7 +47,7 @@ namespace SupermarketWEB.Pages.Categories
             {
                 await _context.SaveChangesAsync();
             }
-            catch(DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException)
             {
                 if (!CategoryExists(Category.Id))
                 {
@@ -65,5 +66,6 @@ namespace SupermarketWEB.Pages.Categories
         {
             return (_context.Categories?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
     }
 }
